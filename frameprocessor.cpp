@@ -11,7 +11,7 @@
 
 FrameProcessor::FrameProcessor(): starved_{false} {
 	config_ = getConfiguration();
-	timer_ = std::unique_ptr<Timer>{new Timer(std::bind(&FrameProcessor::timerCallback, this), std::chrono::milliseconds((int) ceil(1000.0 / config_.framerate)))};
+	timer_ = std::unique_ptr<Timer>{new Timer(std::bind(&FrameProcessor::timerCallback, this), std::chrono::milliseconds((int) floor(1000.0 / config_.framerate)))};
 	timer_->start();
 }
 

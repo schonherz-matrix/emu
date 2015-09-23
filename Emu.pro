@@ -5,10 +5,11 @@
 TEMPLATE = app
 TARGET = Emu
 QT += core gui widgets
-INCLUDEPATH += .
+INCLUDEPATH += . ./sw-common
 QMAKE_CXXFLAGS += -std=c++11 -Wall -pedantic
 QMAKE_LFLAGS += -lm
 
 # Input
-HEADERS += mainwindow.h griddrawer.h frameprocessor.h timer.h matrix.h rpc.h rgb.h array2D.hpp
-SOURCES += main.cpp mainwindow.cpp griddrawer.cpp frameprocessor.cpp timer.cpp rpc.cpp
+HEADERS += mainwindow.h griddrawer.h frameprocessor.h timer.h
+SOURCES += main.cpp mainwindow.cpp griddrawer.cpp frameprocessor.cpp timer.cpp
+LIBS += sw-common/build/lib/libmatrix_sw-common.a

@@ -3,20 +3,20 @@
 #include <cmath>
 #include <QDebug>
 
-#include "rpc.h"
-#include "matrix.h"
-#include "array2D.hpp"
-
-#include <iostream>
-
-FrameProcessor::FrameProcessor(): starved_{false} {
-	config_ = getConfiguration();
+FrameProcessor::FrameProcessor(const std::string& socket_name): starved_{false} {
+	socket_ = std::unique_ptr<LocalSocket>{LocalSocket::create()};
+	socket_->connectToServer(socket_name.c_str(), 1000);
+	socket_->readTimeout(1000);
+	socket_->writeTimeout(1000);
+	pipe_ = std::unique_ptr<PipeInterpreter<FrameProcessor, DaemonEmuInterface>>{new PipeInterpreter<FrameProcessor, DaemonEmuInterface>{this, socket_.release()}};
+	config_ = pipe_->getEmuConfiguration();
 	timer_ = std::unique_ptr<Timer>{new Timer(std::bind(&FrameProcessor::timerCallback, this), std::chrono::milliseconds((int) floor(1000.0 / config_.framerate)))};
 	timer_->start();
 }
 
 FrameProcessor::~FrameProcessor() {
 	timer_->stop();
+	pipe_->disconnect();
 }
 
 const EmuConfiguration& FrameProcessor::getEmuConfiguration() const {

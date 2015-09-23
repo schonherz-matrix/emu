@@ -1,11 +1,11 @@
 #ifndef GRID_DRAWER_H_INCLUDED
 #define GRID_DRAWER_H_INCLUDED
 
+#include "interface/frame.h"
 #include <QBrush>
 #include <QPen>
 #include <QPixmap>
 #include <QWidget>
-#include "matrix.h"
 
 class GridDrawer: public QWidget {
 	Q_OBJECT
@@ -21,8 +21,6 @@ class GridDrawer: public QWidget {
 		QSize sizeHint() const Q_DECL_OVERRIDE;
 	public slots:
 		void setFrame(Frame frame);
-	signals:
-		void clickEvent(int x, int y);
 };
 
 #endif

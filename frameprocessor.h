@@ -33,7 +33,7 @@ class FrameProcessor: public QObject, public EmuInterface {
 		FrameProcessor(const std::string& socket_name);
 		virtual ~FrameProcessor();
 		const EmuConfiguration& getEmuConfiguration() const;
-		void sendFrame(Frame, Frame) override;
+		virtual void sendFrame(Frame, Frame) override;
 };
 
 #endif

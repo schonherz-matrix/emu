@@ -6,10 +6,11 @@
 FrameProcessor::FrameProcessor(const std::string& socket_name): starved_{false} {
 	socket_ = std::unique_ptr<LocalSocket>{LocalSocket::create()};
 	socket_->connectToServer(socket_name.c_str(), 1000);
-	socket_->readTimeout(1000);
-	socket_->writeTimeout(1000);
+	////socket_->readTimeout(1000);
+	////socket_->writeTimeout(1000);
 	pipe_ = std::unique_ptr<PipeInterpreter<FrameProcessor, DaemonEmuInterface>>{new PipeInterpreter<FrameProcessor, DaemonEmuInterface>{this, socket_.release()}};
 	config_ = pipe_->getEmuConfiguration();
+    pipe_->listen(true);
 	timer_ = std::unique_ptr<Timer>{new Timer(std::bind(&FrameProcessor::timerCallback, this), std::chrono::milliseconds((int) floor(1000.0 / config_.framerate)))};
 	timer_->start();
 }

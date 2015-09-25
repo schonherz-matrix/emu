@@ -1,0 +1,10 @@
+moc_*
+
+*.o
+moc_*
+
+*.pro.user
+
+build/**
+
+

@@ -1,19 +1,27 @@
-Mátrix emulátor
-===============
+![This emulator represent the dormitory](emu/emu.png)
 
-# Fordítás
+# Emu
+Emulator for Schönherz Mátrix
 
- * A ```git submodule update --init mueb``` paranccsal töltsük le a _mueb_ alkarton tartalmát. 
- * QtCreatorban nyissuk meg a _mueb_ projektet
- * A projekt beállításai alatt kapcsoljuk ki a _'Shadow build'_ lehetőséget
- * Nyisukk meg most az _'Emu'_ mappában található projekt fájlt, majd fordítsuk le
+## How to get the project
+Clone the project with
 
-# Futtatás
- * Vegyük fel a gépünk _loopback_ interfészére a 10.6.0.0/16-os hálóból egy tetszőleges nem broadcast címet
- * Kattintsunk QtCreatorban a futtatás gombra
+```git clone --recurse-submodules```
 
-# Hasznos parancsok
+## Prerequisites
+Qt 5.12 or above is recommended
 
+Build tools for Qt
+
+## How to build
+Simply run
+```
+qmake
+make
+```
+
+## Usage
+Add an IP address to your loopback interface from the 10.6.0.0/16 subnet(If you're not already in the subnet). After that simply run Emu
 ```bash
-    sudo ip a a 10.6.23.45/16 dev lo
+sudo ip a a 10.6.0.1/16 dev lo
 ```

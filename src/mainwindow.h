@@ -19,7 +19,7 @@ class MainWindow : public QMainWindow {
 
  private:
   QImage frame;
-  MUEBReceiver muebreceiver;
+  MuebReceiver muebreceiver;
   QList<QPoint> coords;
   QImage schView;
 };

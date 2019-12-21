@@ -30,7 +30,7 @@ MainWindow::MainWindow(QWidget* parent)
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint);
 
   /* View -> Controller signals */
-  connect(&muebreceiver, &MUEBReceiver::frameChanged, this,
+  connect(&muebreceiver, &MuebReceiver::frameChanged, this,
           &MainWindow::updateFrame);
 }
 
@@ -49,21 +49,21 @@ void MainWindow::paintEvent(QPaintEvent* event) {
   int wn = 0;
 
   for (auto tmp : coords) {
-      int x = tmp.x(), y = tmp.y();
+    int x = tmp.x(), y = tmp.y();
 
-      auto leftTop = frame.pixelColor((wn % 16) * 2 + 0, (wn / 16) * 2 + 0);
-      auto rightTop = frame.pixelColor((wn % 16) * 2 + 1, (wn / 16) * 2 + 0);
-      auto leftBottom = frame.pixelColor((wn % 16) * 2 + 0, (wn / 16) * 2 + 1);
-      auto rigthBottom = frame.pixelColor((wn % 16) * 2 + 1, (wn / 16) * 2 + 1);
+    auto leftTop = frame.pixelColor((wn % 16) * 2 + 0, (wn / 16) * 2 + 0);
+    auto rightTop = frame.pixelColor((wn % 16) * 2 + 1, (wn / 16) * 2 + 0);
+    auto leftBottom = frame.pixelColor((wn % 16) * 2 + 0, (wn / 16) * 2 + 1);
+    auto rigthBottom = frame.pixelColor((wn % 16) * 2 + 1, (wn / 16) * 2 + 1);
 
-      painter.setBrush(leftTop);
-      painter.drawRect(x, y, 8, 8);
-      painter.setBrush(rightTop);
-      painter.drawRect(x + 8, y, 8, 8);
-      painter.setBrush(leftBottom);
-      painter.drawRect(x, y + 8, 8, 8);
-      painter.setBrush(rigthBottom);
-      painter.drawRect(x + 8, y + 8, 8, 8);
-      wn++;
+    painter.setBrush(leftTop);
+    painter.drawRect(x, y, 8, 8);
+    painter.setBrush(rightTop);
+    painter.drawRect(x + 8, y, 8, 8);
+    painter.setBrush(leftBottom);
+    painter.drawRect(x, y + 8, 8, 8);
+    painter.setBrush(rigthBottom);
+    painter.drawRect(x + 8, y + 8, 8, 8);
+    wn++;
   }
 }

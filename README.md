@@ -1,21 +1,18 @@
-![This emulator represent the dormitory](emu/emu.png)
+![This emulator represent the dormitory](emu.png)
 
-# Emu
+# emu
 Emulator for Schönherz Mátrix
-
-## How to get the project
-Clone the project with
-
-```git clone --recurse-submodules```
 
 ## Prerequisites
 Qt 5.12 or above is recommended
 
 Build tools for Qt
 
+libmueb outside of the project(../libmueb)
+
 ## How to build
 Simply run
-```
+```bash
 qmake
 make
 ```

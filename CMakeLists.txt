@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.16)
 
 project(
   emu
@@ -15,10 +15,16 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+add_compile_definitions(LIBMUEB_AS_DLL)
+
 find_package(
   Qt5
   COMPONENTS Widgets
   REQUIRED)
+
+if(NOT DEFINED MATRIX_SIMPLE)
+  find_package(libmueb 2.0 REQUIRED)
+endif()
 
 add_executable(
   ${PROJECT_NAME}

@@ -2,6 +2,7 @@
 #define MATRIXEMULATOR_H
 
 #include <QWidget>
+
 #include "muebreceiver.h"
 
 namespace Ui {
@@ -16,7 +17,7 @@ class MatrixEmulator : public QWidget {
   ~MatrixEmulator();
 
  private:
-  MuebReceiver m_receiver{this};
+  MuebReceiver &m_receiver;
   Ui::MatrixEmulator *ui;
 };
 

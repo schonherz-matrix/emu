@@ -1,8 +1,11 @@
 #include "matrixemulator.h"
+
 #include "ui_matrixemulator.h"
 
 MatrixEmulator::MatrixEmulator(QWidget *parent)
-    : QWidget(parent), ui(new Ui::MatrixEmulator) {
+    : QWidget(parent),
+      m_receiver(MuebReceiver::getInstance()),
+      ui(new Ui::MatrixEmulator) {
   ui->setupUi(this);
   setWindowFlags(Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint |
                  Qt::MSWindowsFixedSizeDialogHint);

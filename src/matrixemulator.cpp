@@ -10,9 +10,6 @@ MatrixEmulator::MatrixEmulator(QWidget *parent)
   setWindowFlags(Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint |
                  Qt::MSWindowsFixedSizeDialogHint);
 
-  setWindowFlags(Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint |
-                 Qt::MSWindowsFixedSizeDialogHint);
-
   connect(&m_receiver, &MuebReceiver::frameChanged, ui->schWidget,
           &SchWidget::updateFrame);
   connect(&m_receiver, &MuebReceiver::frameChanged, ui->gridWidget,

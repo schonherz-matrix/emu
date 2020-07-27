@@ -35,6 +35,6 @@ void GridWidget::paintEvent(QPaintEvent *event) {
   painter.scale(m_scale, m_scale);
   painter.drawImage(0, 0, m_currentFrame);
 
-  painter.setPen(QPen(Qt::black, 0));
+  painter.setPen(QPen(Qt::lightGray, 0));
   painter.drawLines(m_gridLines);
 }

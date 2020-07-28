@@ -2,7 +2,8 @@
 #define SCHWIDGET_H
 
 #include <QWidget>
-#include "libmueb_global.h"
+
+#include "libmuebconfig.h"
 
 class SchWidget : public QWidget {
   Q_OBJECT

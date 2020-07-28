@@ -2,7 +2,8 @@
 #define GRIDWIDGET_H
 
 #include <QWidget>
-#include "libmueb_global.h"
+
+#include "libmuebconfig.h"
 
 class GridWidget : public QWidget {
   Q_OBJECT

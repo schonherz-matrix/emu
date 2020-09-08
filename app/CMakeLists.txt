@@ -11,22 +11,20 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_compile_definitions(LIBMUEB_AS_DLL)
 
-find_package(Qt5 COMPONENTS Core Quick REQUIRED)
+find_package(
+  Qt5
+  COMPONENTS Core Quick
+  REQUIRED)
 
 if(NOT DEFINED MATRIX_SIMPLE)
   find_package(libmueb 2.0 REQUIRED)
 endif()
 
-add_executable(
-  ${PROJECT_NAME}
-  main.cpp
-  schcoords.h
-  resources.qrc
-  qml/qml.qrc
-  schonherzitem.cpp
-  schonherzitem.hpp)
+add_executable(${PROJECT_NAME} main.cpp schcoords.h resources.qrc qml/qml.qrc
+                               schonherzitem.cpp schonherzitem.hpp)
 
-target_compile_definitions(${PROJECT_NAME}
+target_compile_definitions(
+  ${PROJECT_NAME}
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Core Qt5::Quick
                                               libmueb::muebreceiver)

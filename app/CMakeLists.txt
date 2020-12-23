@@ -29,6 +29,11 @@ target_compile_definitions(
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Core Qt5::Quick
                                               libmueb::muebreceiver)
 
+install(
+  TARGETS ${PROJECT_NAME}
+  EXPORT "${TARGETS_EXPORT_NAME}"
+  RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}")
+
 set(CPACK_PACKAGE_VENDOR "PROJECT_HOMEPAGE_URL")
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY ${PROJECT_DESCRIPTION})
 set(CPACK_PACKAGE_VERSION_MAJOR ${PROJECT_VERSION_MAJOR})

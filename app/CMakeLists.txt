@@ -20,8 +20,9 @@ if(NOT DEFINED MATRIX_SIMPLE)
   find_package(libmueb 2.0 REQUIRED)
 endif()
 
-add_executable(${PROJECT_NAME} main.cpp schcoords.h resources.qrc qml/qml.qrc
-                               schonherzitem.cpp schonherzitem.hpp)
+add_executable(
+  ${PROJECT_NAME} WIN32 main.cpp schcoords.h resources.qrc qml/qml.qrc
+                        schonherzitem.cpp schonherzitem.hpp)
 
 target_compile_definitions(
   ${PROJECT_NAME}

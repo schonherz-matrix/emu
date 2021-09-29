@@ -5,22 +5,21 @@
 #include "schcoords.h"
 
 SchonherzItem::SchonherzItem(QQuickItem *parent) : QQuickPaintedItem(parent) {
+  m_currentFrame = libmueb::MuebReceiver::Instance().frame();
   setSize(m_background.size());
-  m_currentFrame.fill(Qt::black);
 }
 
 void SchonherzItem::paint(QPainter *painter) {
-  using namespace libmueb::defaults;
-
+  libmueb::MuebReceiver &receiver = libmueb::MuebReceiver::Instance();
   painter->drawImage(boundingRect(), m_background);
 
   int windowIdx = 0;
   for (auto point : schCoords) {
-    auto row = (windowIdx / windowPerRow) * verticalPixelUnit;
-    auto col = (windowIdx % windowPerRow) * horizontalPixelUnit;
+    auto row = (windowIdx / 16) * receiver.vertical_pixel_unit();
+    auto col = (windowIdx % 16) * receiver.horizontal_pixel_unit();
 
-    for (int y = 0; y < verticalPixelUnit; ++y) {
-      for (int x = 0; x < horizontalPixelUnit; ++x) {
+    for (int y = 0; y < receiver.vertical_pixel_unit(); ++y) {
+      for (int x = 0; x < receiver.horizontal_pixel_unit(); ++x) {
         painter->fillRect(point.x() + x * 8, point.y() + y * 8, 8, 8,
                           m_currentFrame.pixelColor(col + x, row + y));
       }

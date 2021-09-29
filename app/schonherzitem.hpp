@@ -3,7 +3,7 @@
 #include <QImage>
 #include <QQuickPaintedItem>
 
-#include "libmuebconfig.h"
+#include "muebreceiver.h"
 
 class SchonherzItem : public QQuickPaintedItem {
   Q_OBJECT
@@ -21,6 +21,6 @@ class SchonherzItem : public QQuickPaintedItem {
   void setCurrentFrame(const QImage &currentFrame);
 
  private:
-  QImage m_currentFrame{libmueb::defaults::frame};
+  QImage m_currentFrame;
   QImage m_background{":/images/sch.jpg"};
 };

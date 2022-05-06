@@ -6,6 +6,8 @@ Emulator for Schönherz Mátrix
 
 ## Usage
 
+### Old libmueb(v2/Qt 5)
+
 When testing add an IP address to your loopback interface from the 10.6.0.0/16 subnet(If you're not already in the
 subnet).
 
@@ -19,3 +21,6 @@ Windows:
 
 Install a loopback adapter then set the correct IP address.
 
+### New libmueb(v4/Qt 6)
+
+See https://github.com/schonherz-matrix/libmueb/blob/main/README.md#Config
